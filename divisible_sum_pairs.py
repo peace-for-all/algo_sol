@@ -19,3 +19,7 @@ def divisibleSumPairs(n, k, ar):
     # return int - number of pairs
     print(out)
     return len(out)
+
+# Improve:
+# - nested for? remove?
+# - Reversed j and check for i > j on line 16 are meaningless together. Better do j from 0 to n, same as i, or figure how to go without it.
