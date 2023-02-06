@@ -25,14 +25,6 @@ def is_happy_naive(n):
 
         print(f"Sum of 2 and 8 in 28; n = {n}, sum squares = {n_sum}")
 
-        # prev_n = n
-        # n = next_n
-        # if prev_n == next_n:
-        #     repeats += 1
-
-        # if repeats >= 2: # magic number - idk why 2
-        #     return False
-
         # this for any case
         if count > 100:
             print(f"Cycles: {count}")
@@ -47,5 +39,32 @@ def is_happy_naive(n):
 #     print("TRY AGAIN: 23 should be happy: 1")
 # assert is_happy_naive(23) == True, '23 isnt happy'
 
-if is_happy_naive(2) != False:
-    print('2 should cause endless loop, isnt happy')
+# if is_happy_naive(2) != False:
+#     print('2 should cause endless loop, isnt happy')
+
+def is_happy_fast_slow(n):
+    print(f"Got {n}")
+
+    def calc_sum_squares(n):
+        prod = 0
+        nlst = list(str(n))
+        for i in nlst:
+            i = int(i)
+            prod += i*i
+        return prod
+
+    slow = n 
+    fast = calc_sum_squares(n)
+
+    while slow != fast: # NOPE, while what?
+        if fast != 1 and fast != slow:
+            slow += 1
+            fast += 2
+        if fast == 1:
+            return True
+    return False 
+
+    print(f"Slow: {slow}, fast: {fast}")
+
+if __name__ == '__main__':
+    is_happy_fast_slow(28)
